@@ -2,6 +2,7 @@ require "ghbuttons-rails/version"
 
 module Ghbuttons
   module Rails
-    # Your code goes here...
+    class Engine < ::Rails::Engine
+    end
   end
 end
