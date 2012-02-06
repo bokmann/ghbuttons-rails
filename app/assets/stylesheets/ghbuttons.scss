@@ -3,8 +3,64 @@ ghbuttons-rails
 (Original CSS by Nicolas Gallagher, Sassified by David Bock)
 */
 
-$pill-radius: 50em;
+$ghbuttons-pill-radius: 50em;
 
+$ghbuttons-sprites: aperture, arrow_down, arrow_left, arrow_right, arrow_up, article, bars,
+                    bars_alt, bolt, book, book_alt, book_alt2, box, brush, brush_alt, calendar,
+                    calendar_alt_fill, calendar_alt_stroke, camera, cd, chart, chart_alt, chat,
+                    chat_alt_fill, chat_alt_stroke, check, check_alt, clock, cog, comment_alt1_fill,
+                    comment_alt1_stroke, comment_alt2_fill, comment_alt2_stroke, comment_fill,
+                    comment_stroke, compass, cursor, curved_arrow, denied, dial, document_alt_fill,
+                    document_alt_stroke, document_fill, document_stroke, download, eject, equalizer,
+                    eye, first, folder_fill, folder_stroke, fork, fullscreen, fullscreen_alt,
+                    fullscreen_exit, fullscreen_exit_alt, hash, headphones, heart_fill, heart_stroke,
+                    home, image, info, key_stroke, last, layers, layers_alt, left_quote, link, list,
+                    list_nested, lock_stroke, loop, magnifying_glass, mail, map_pin_fill,
+                    map_pin_stroke, mic, minus, moon_fill, moon_stroke, move, move_alt1,
+                    move_horizontal, move_horizontal_alt1, move_vertical, move_vertical_alt1,
+                    new_window, pause, pen, pen_alt2, pilcrow, pin, play, plus, rain, read_more,
+                    reload, right_quote, rss, rss_alt, share, spin, star, steering_wheel, stop,
+                    sun_fill, sun_stroke, tag_fill, tag_stroke, target, transfer, trash_fill,
+                    trash_stroke, umbrella, undo, unlock_stroke, upload, user, volume, volume_mute,
+                    wrench, x;
+
+@mixin button-highlight($text-color, $alt-text-color, $background1, $background2) {
+  $highlight-1: mix($background1, $background2);
+  $highlight-2: mix($background1, $background2, 75%);
+  $highlight-3: mix($background1, $background2, 85%);
+
+   color: $text-color;
+   &:hover, &:focus {
+     border-color: $highlight-3;
+     border-bottom-color: $background1;
+     color: $alt-text-color;
+     background-color: $background2;
+     background-image: -webkit-gradient(linear, 0 0, 0 100%, from($background2), to($highlight-2));
+     background-image: -moz-linear-gradient($background2, $highlight-2);
+     background-image: -o-linear-gradient($background2, $highlight-2);
+     background-image: linear-gradient($background2, $highlight-2);
+   }
+   &:active {
+     color: $alt-text-color;
+     border-color: $background1;
+     border-bottom-color: $highlight-1;
+     background-color: $highlight-2;
+     background-image: -webkit-gradient(linear, 0 0, 0 100%, from($highlight-2), to($background2));
+     background-image: -moz-linear-gradient($highlight-2, $background2);
+     background-image: -o-linear-gradient($highlight-2, $background2);
+     background-image: linear-gradient($highlight-2, $background2);
+   }
+   &.active {
+     border-color: $background1;
+     border-bottom-color: $highlight-1;
+     background-color: $highlight-2;
+     background-image: -webkit-gradient(linear, 0 0, 0 100%, from($highlight-2), to($background2));
+     background-image: -moz-linear-gradient($highlight-2, $background2);
+     background-image: -o-linear-gradient($highlight-2, $background2);
+     background-image: linear-gradient($highlight-2, $background2);
+   }
+ }
+									
 .button {
   position: relative;
   overflow: visible;
@@ -70,27 +126,10 @@ $pill-radius: 50em;
   }
 
 
-  $sprites: aperture, arrow_down, arrow_left, arrow_right, arrow_up, article, bars,
-            bars_alt, bolt, book, book_alt, book_alt2, box, brush, brush_alt, calendar,
-            calendar_alt_fill, calendar_alt_stroke, camera, cd, chart, chart_alt, chat,
-            chat_alt_fill, chat_alt_stroke, check, check_alt, clock, cog, comment_alt1_fill,
-            comment_alt1_stroke, comment_alt2_fill, comment_alt2_stroke, comment_fill,
-            comment_stroke, compass, cursor, curved_arrow, denied, dial, document_alt_fill,
-            document_alt_stroke, document_fill, document_stroke, download, eject, equalizer,
-            eye, first, folder_fill, folder_stroke, fork, fullscreen, fullscreen_alt,
-            fullscreen_exit, fullscreen_exit_alt, hash, headphones, heart_fill, heart_stroke,
-            home, image, info, key_stroke, last, layers, layers_alt, left_quote, link, list,
-            list_nested, lock_stroke, loop, magnifying_glass, mail, map_pin_fill,
-            map_pin_stroke, mic, minus, moon_fill, moon_stroke, move, move_alt1,
-            move_horizontal, move_horizontal_alt1, move_vertical, move_vertical_alt1,
-            new_window, pause, pen, pen_alt2, pilcrow, pin, play, plus, rain, read_more,
-            reload, right_quote, rss, rss_alt, share, spin, star, steering_wheel, stop,
-            sun_fill, sun_stroke, tag_fill, tag_stroke, target, transfer, trash_fill,
-            trash_stroke, umbrella, undo, unlock_stroke, upload, user, volume, volume_mute,
-            wrench, x;
+
   $i: 0;
 
-  @each $sprite in $sprites {
+  @each $sprite in $ghbuttons-sprites {
     &.#{$sprite}.icon {
 	    &:before {
 	      background-position: 0 $i*-12px;
@@ -102,98 +141,33 @@ $pill-radius: 50em;
 	  $i: $i + 1;
   }
 
+  // special case button.  right arrow on the right side.
   &.arrow_right.icon:before {
 	  float: right;
 	  margin: 0 -0.25em 0 0.5em;
 	}
 	
-
-
-
   &.primary {
     font-weight: bold; }
 
   &.danger {
-    color: #900;
-    &:hover, &:focus {
-      border-color: #b53f3a;
-      border-bottom-color: #a0302a;
-      color: #fff;
-      background-color: #dc5f59;
-      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dc5f59), to(#b33630));
-      background-image: -moz-linear-gradient(#dc5f59, #b33630);
-      background-image: -o-linear-gradient(#dc5f59, #b33630);
-      background-image: linear-gradient(#dc5f59, #b33630); }
-    &:active {
-      border-color: #b53f3a;
-      border-bottom-color: #a0302a;
-      color: #fff;
-      background-color: #dc5f59;
-      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dc5f59), to(#b33630));
-      background-image: -moz-linear-gradient(#dc5f59, #b33630);
-      background-image: -o-linear-gradient(#dc5f59, #b33630);
-      background-image: linear-gradient(#dc5f59, #b33630);
-      border-color: #a0302a;
-      border-bottom-color: #bf4843;
-      background-color: #b33630;
-      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#b33630), to(#dc5f59));
-      background-image: -moz-linear-gradient(#b33630, #dc5f59);
-      background-image: -o-linear-gradient(#b33630, #dc5f59);
-      background-image: linear-gradient(#b33630, #dc5f59); }
-    &.active {
-      border-color: #a0302a;
-      border-bottom-color: #bf4843;
-      background-color: #b33630;
-      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#b33630), to(#dc5f59));
-      background-image: -moz-linear-gradient(#b33630, #dc5f59);
-      background-image: -o-linear-gradient(#b33630, #dc5f59);
-      background-image: linear-gradient(#b33630, #dc5f59); } }
-
-
+	  @include button-highlight(#900, #fff, #a0302a, #dc5f59);
+	}
+	
   &.positive {
-    &:hover, &:focus {
-      border-color: #45BF55;
-      background-color: #96ED89;
-      border-bottom-color: #45bf55;
-      color: #fff;
-      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#96ed89), to(#45bf55));
-      background-image: -moz-linear-gradient(#96ed89, #45bf55);
-      background-image: -o-linear-gradient(#96ed89, #45bf55);
-      background-image: linear-gradient(#96ed89, #45bf55); }
-    &:active {
-      border-color: #45BF55;
-      background-color: #96ED89;
-      border-bottom-color: #45bf55;
-      color: #fff;
-      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#96ed89), to(#45bf55));
-      background-image: -moz-linear-gradient(#96ed89, #45bf55);
-      background-image: -o-linear-gradient(#96ed89, #45bf55);
-      background-image: linear-gradient(#96ed89, #45bf55);
-      border-color: #45bf55;
-      border-bottom-color: #45bf55;
-      background-color: #45bf55;
-      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#45bf55), to(#96ed89));
-      background-image: -moz-linear-gradient(#45bf55, #96ed89);
-      background-image: -o-linear-gradient(#45bf55, #96ed89);
-      background-image: linear-gradient(#45bf55, #96ed89); }
-    &.active {
-      border-color: #45bf55;
-      border-bottom-color: #45bf55;
-      background-color: #45bf55;
-      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#45bf55), to(#96ed89));
-      background-image: -moz-linear-gradient(#45bf55, #96ed89);
-      background-image: -o-linear-gradient(#45bf55, #96ed89);
-      background-image: linear-gradient(#45bf55, #96ed89); } }
-
+	  @include button-highlight(#090, #fff, #45bf55, #96ed89);
+  }
 
   &.pill {
-    -webkit-border-radius: $pill-radius;
-    -moz-border-radius: $pill-radius;
-    border-radius: $pill-radius;
+    -webkit-border-radius: $ghbuttons-pill-radius;
+    -moz-border-radius: $ghbuttons-pill-radius;
+    border-radius: $ghbuttons-pill-radius;
   }
+
   &.disable {
     opacity: 0.5;
   }
+
   &.big {
     font-size: 14px;
     &.icon:before {
