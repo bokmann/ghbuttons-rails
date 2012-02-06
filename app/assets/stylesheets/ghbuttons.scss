@@ -3,6 +3,8 @@ ghbuttons-rails
 (Original CSS by Nicolas Gallagher, Sassified by David Bock)
 */
 
+$pill-radius: 50em;
+
 .button {
   position: relative;
   overflow: visible;
@@ -55,22 +57,37 @@ ghbuttons-rails
   &::-moz-focus-inner {
     padding: 0;
     border: 0; }
+
   &.icon:before {
     content: "";
     position: relative;
-    top: 1px;
+    top: -1px;
     float: left;
     width: 12px;
     height: 12px;
     margin: 0 0.75em 0 -0.25em;
-    background: url(ghbuttons-sprite.png) 0 99px no-repeat; }
+    background: url(ghbuttons-sprite.png) 0 99px no-repeat;
+  }
 
-  $sprites: arrowup, arrowdown, arrowleft, arrowright, 
-            approve, remove, log, calendar, chat,
-            clock, settings, comment, fork,
-            like, home, key, lock, unlock,
-            loop, search, mail, move, edit, pin,
-            add, reload, rss, tag, trash, favorite, user;
+
+  $sprites: aperture, arrow_down, arrow_left, arrow_right, arrow_up, article, bars,
+            bars_alt, bolt, book, book_alt, book_alt2, box, brush, brush_alt, calendar,
+            calendar_alt_fill, calendar_alt_stroke, camera, cd, chart, chart_alt, chat,
+            chat_alt_fill, chat_alt_stroke, check, check_alt, clock, cog, comment_alt1_fill,
+            comment_alt1_stroke, comment_alt2_fill, comment_alt2_stroke, comment_fill,
+            comment_stroke, compass, cursor, curved_arrow, denied, dial, document_alt_fill,
+            document_alt_stroke, document_fill, document_stroke, download, eject, equalizer,
+            eye, first, folder_fill, folder_stroke, fork, fullscreen, fullscreen_alt,
+            fullscreen_exit, fullscreen_exit_alt, hash, headphones, heart_fill, heart_stroke,
+            home, image, info, key_stroke, last, layers, layers_alt, left_quote, link, list,
+            list_nested, lock_stroke, loop, magnifying_glass, mail, map_pin_fill,
+            map_pin_stroke, mic, minus, moon_fill, moon_stroke, move, move_alt1,
+            move_horizontal, move_horizontal_alt1, move_vertical, move_vertical_alt1,
+            new_window, pause, pen, pen_alt2, pilcrow, pin, play, plus, rain, read_more,
+            reload, right_quote, rss, rss_alt, share, spin, star, steering_wheel, stop,
+            sun_fill, sun_stroke, tag_fill, tag_stroke, target, transfer, trash_fill,
+            trash_stroke, umbrella, undo, unlock_stroke, upload, user, volume, volume_mute,
+            wrench, x;
   $i: 0;
 
   @each $sprite in $sprites {
@@ -85,7 +102,7 @@ ghbuttons-rails
 	  $i: $i + 1;
   }
 
-  &.arrowright.icon:before {
+  &.arrow_right.icon:before {
 	  float: right;
 	  margin: 0 -0.25em 0 0.5em;
 	}
@@ -95,6 +112,7 @@ ghbuttons-rails
 
   &.primary {
     font-weight: bold; }
+
   &.danger {
     color: #900;
     &:hover, &:focus {
@@ -130,6 +148,8 @@ ghbuttons-rails
       background-image: -moz-linear-gradient(#b33630, #dc5f59);
       background-image: -o-linear-gradient(#b33630, #dc5f59);
       background-image: linear-gradient(#b33630, #dc5f59); } }
+
+
   &.positive {
     &:hover, &:focus {
       border-color: #45BF55;
@@ -164,16 +184,23 @@ ghbuttons-rails
       background-image: -moz-linear-gradient(#45bf55, #96ed89);
       background-image: -o-linear-gradient(#45bf55, #96ed89);
       background-image: linear-gradient(#45bf55, #96ed89); } }
+
+
   &.pill {
-    -webkit-border-radius: 50em;
-    -moz-border-radius: 50em;
-    border-radius: 50em; }
+    -webkit-border-radius: $pill-radius;
+    -moz-border-radius: $pill-radius;
+    border-radius: $pill-radius;
+  }
   &.disable {
-    opacity: 0.5; }
+    opacity: 0.5;
+  }
   &.big {
     font-size: 14px;
     &.icon:before {
-      top: 0; } } }
+      top: 0;
+    }
+  }
+}
 
 .button-group {
   display: inline-block;
@@ -228,7 +255,8 @@ ghbuttons-rails
     &:active, &.active {
       background-color: #3072b3; }
     &.icon:before {
-      opacity: 0.8; } } }
+      opacity: 0.8; } }
+}
 
 
 .button-container {
