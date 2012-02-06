@@ -1,17 +1,19 @@
-= ghbuttons-rails
+# ghbuttons-rails
+
 Github-style buttons for the Rails Asset Pipeline.
 
 Inspired by and ripped out of css3-gitgub-buttons
 
 http://nicolasgallagher.com/lab/css3-github-buttons/
 
-= Usage:
+# Usage:
 
  - include the stylesheet directly, or include it in your application.css with directives
  - use the generated css wisely.
  - use the mixins to make your own semantic css.
 
-= TODO:
+# TODO:
+
  - Finish sassification.  I'd like the colors to be variables you can override.
  - I'd like danger and positive to be created by a mixin you can use with your own
    colors, so you can have your own semantic classes for emphasis.
@@ -19,6 +21,6 @@ http://nicolasgallagher.com/lab/css3-github-buttons/
  - Making the 'button' a semantic mixin is going to be tough - the containers modify it,
    and it is huge, so it will be inefficient to spit out everything multiple times.
 
-= License:
+# License:
 
 MIT license.
