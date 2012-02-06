@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "ghbuttons-rails"
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features,vendor}/*`.split("\n")
+  s.files         = Dir["{lib,app}/**/*"] + ["ghbuttons-rails.gemspec", "LICENSE", "README.md"]
+  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
