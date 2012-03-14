@@ -1,5 +1,12 @@
-$ghbuttons-pill-radius: 1em;
-$ghbuttons-default-big-size: 14px;
+$ghbutton-pill-radius: 1em !default;
+$ghbutton-default-big-size: 14px !default;
+$ghbutton-text-color: #333 !default;
+$ghbutton-text-alt-color: #fff !default;
+$ghbutton-background-color1: #f4f4f4 !default;
+$ghbutton-background-color2: #ececec !default;
+$ghbutton-highlight-color1: #3072b3 !default;
+$ghbutton-highlight-color2: #599bdc !default;
+$ghbutton-border-color: #d4d4d4 !default;
 
 $ghbuttons-sprites: aperture, arrow_down, arrow_left, arrow_right, arrow_up, article, bars,
                     bars_alt, bolt, book, book_alt, book_alt2, box, brush, brush_alt, calendar,
@@ -19,3 +26,5 @@ $ghbuttons-sprites: aperture, arrow_down, arrow_left, arrow_right, arrow_up, art
                     sun_fill, sun_stroke, tag_fill, tag_stroke, target, transfer, trash_fill,
                     trash_stroke, umbrella, undo, unlock_stroke, upload, user, volume, volume_mute,
                     wrench, x;
+
+

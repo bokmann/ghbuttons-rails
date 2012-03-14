@@ -11,20 +11,21 @@ ghbuttons-rails
   overflow: visible;
   display: inline-block;
   padding: 0.5em 1em;
-  border: 1px solid #d4d4d4;
+  border: 1px solid $ghbutton-border-color;
   margin: 0;
   text-decoration: none;
   text-shadow: 1px 1px 0 #fff;
   font: 11px / normal sans-serif;
-  color: #333;
   white-space: nowrap;
   cursor: pointer;
   outline: none;
-  background-color: #ececec;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
-  background-image: -moz-linear-gradient(#f4f4f4, #ececec);
-  background-image: -o-linear-gradient(#f4f4f4, #ececec);
-  background-image: linear-gradient(#f4f4f4, #ececec);
+
+  background-color: $ghbutton-background-color2;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($ghbutton-background-color1), to($ghbutton-background-color2));
+  background-image: -moz-linear-gradient($ghbutton-background-color1, $ghbutton-background-color2);
+  background-image: -o-linear-gradient($ghbutton-background-color1, $ghbutton-background-color2);
+  background-image: linear-gradient($ghbutton-background-color1, $ghbutton-background-color2);
+
   -webkit-background-clip: padding;
   -moz-background-clip: padding;
   -o-background-clip: padding-box;
@@ -36,25 +37,9 @@ ghbuttons-rails
   /* IE hacks */
   zoom: 1;
   *display: inline;
-  &:hover, &:focus, &:active, &.active {
-    border-color: #3072b3;
-    border-bottom-color: #2a65a0;
-    text-decoration: none;
-    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
-    color: #fff;
-    background-color: #3C8DDE;
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#599bdc), to(#3072b3));
-    background-image: -moz-linear-gradient(#599bdc, #3072b3);
-    background-image: -o-linear-gradient(#599bdc, #3072b3);
-    background-image: linear-gradient(#599bdc, #3072b3); }
-  &:active, &.active {
-    border-color: #2a65a0;
-    border-bottom-color: #3884CF;
-    background-color: #3072b3;
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3072b3), to(#599bdc));
-    background-image: -moz-linear-gradient(#3072b3, #599bdc);
-    background-image: -o-linear-gradient(#3072b3, #599bdc);
-    background-image: linear-gradient(#3072b3, #599bdc); }
+
+  @include ghbutton-highlight($ghbutton-text-color, $ghbutton-text-alt-color, $ghbutton-highlight-color1, $ghbutton-highlight-color2);
+
   &::-moz-focus-inner {
     padding: 0;
     border: 0; }
@@ -90,7 +75,8 @@ ghbuttons-rails
 	}
 	
   &.primary {
-    font-weight: bold; }
+    font-weight: bold;
+  }
 
   &.danger {
 	  @include ghbutton-highlight(#900, #fff, #a0302a, #dc5f59);
@@ -101,7 +87,7 @@ ghbuttons-rails
   }
 
   &.pill {
-	  @include ghbutton-pill($ghbuttons-pill-radius);
+	  @include ghbutton-pill($ghbutton-pill-radius);
   }
 
   &.disable {
@@ -109,7 +95,7 @@ ghbuttons-rails
   }
 
   &.big {
-    @include ghbutton-big($ghbuttons-default-big-size);
+    @include ghbutton-big($ghbutton-default-big-size);
   }
 }
 
@@ -124,19 +110,25 @@ ghbuttons-rails
 
 .button + {
   .button, .button-group {
-    margin-left: 15px; } }
+    margin-left: 15px;
+  }
+}
 
 .button-group {
   + {
     .button, .button-group {
-      margin-left: 15px; } }
+      margin-left: 15px;
+    }
+  }
   li {
     float: left;
     padding: 0;
-    margin: 0; }
+    margin: 0;
+  }
   .button {
     float: left;
-    margin-left: -1px; }
+    margin-left: -1px;
+  }
   > .button:not(:first-child):not(:last-child), li:not(:first-child):not(:last-child) .button {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -157,19 +149,23 @@ ghbuttons-rails
     border-top-left-radius: 0;
     border-bottom-left-radius: 0; }
   &.minor-group .button {
-    border: 1px solid #d4d4d4;
+    border: 1px solid $ghbutton-border-color;
     text-shadow: none;
     background-image: none;
     background-color: #fff;
     &:hover, &:focus {
-      background-color: #599bdc; }
+      background-color: $ghbutton-highlight-color2; }
     &:active, &.active {
-      background-color: #3072b3; }
+      background-color: $ghbutton-highlight-color1; }
     &.icon:before {
-      opacity: 0.8; } }
+      opacity: 0.8;
+    }
+  }
 }
 
 
 .button-container {
   .button, .button-group {
-    vertical-align: top; } }
+    vertical-align: top;
+  }
+}

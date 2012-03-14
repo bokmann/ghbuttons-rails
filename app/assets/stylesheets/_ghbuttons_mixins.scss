@@ -3,37 +3,30 @@
   $highlight-2: mix($background1, $background2, 75%);
   $highlight-3: mix($background1, $background2, 85%);
 
-   color: $text-color;
-   &:hover, &:focus {
-     border-color: $highlight-3;
-     border-bottom-color: $background1;
-     color: $alt-text-color;
-     background-color: $background2;
-     background-image: -webkit-gradient(linear, 0 0, 0 100%, from($background2), to($highlight-2));
-     background-image: -moz-linear-gradient($background2, $highlight-2);
-     background-image: -o-linear-gradient($background2, $highlight-2);
-     background-image: linear-gradient($background2, $highlight-2);
-   }
-   &:active {
-     color: $alt-text-color;
-     border-color: $background1;
-     border-bottom-color: $highlight-1;
-     background-color: $highlight-2;
-     background-image: -webkit-gradient(linear, 0 0, 0 100%, from($highlight-2), to($background2));
-     background-image: -moz-linear-gradient($highlight-2, $background2);
-     background-image: -o-linear-gradient($highlight-2, $background2);
-     background-image: linear-gradient($highlight-2, $background2);
-   }
-   &.active {
-     border-color: $background1;
-     border-bottom-color: $highlight-1;
-     background-color: $highlight-2;
-     background-image: -webkit-gradient(linear, 0 0, 0 100%, from($highlight-2), to($background2));
-     background-image: -moz-linear-gradient($highlight-2, $background2);
-     background-image: -o-linear-gradient($highlight-2, $background2);
-     background-image: linear-gradient($highlight-2, $background2);
-   }
- }
+  color: $text-color;
+  &:hover, &:focus {
+    border-color: $highlight-3;
+    border-bottom-color: $background1;
+    color: $alt-text-color;
+    background-color: $background2;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from($background2), to($highlight-2));
+    background-image: -moz-linear-gradient($background2, $highlight-2);
+    background-image: -o-linear-gradient($background2, $highlight-2);
+    background-image: linear-gradient($background2, $highlight-2);
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+  }
+  &:active, &.active {
+    color: $alt-text-color;
+    border-color: $background1;
+    border-bottom-color: $highlight-1;
+    background-color: $highlight-2;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from($highlight-2), to($background2));
+    background-image: -moz-linear-gradient($highlight-2, $background2);
+    background-image: -o-linear-gradient($highlight-2, $background2);
+    background-image: linear-gradient($highlight-2, $background2);
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+  }
+}
 
 @mixin ghbutton-pill($radius) {
 	-webkit-border-radius: $radius;
