@@ -20,7 +20,11 @@ http://nicolasgallagher.com/lab/css3-github-buttons/
  - I want to make some more things mixins - 'big' is presentational, not declarative.
  - Making the 'button' a semantic mixin is going to be tough - the containers modify it,
    and it is huge, so it will be inefficient to spit out everything multiple times.
-
+ - Since I wrote this I found the font-awesome project and released the font-awesome
+   rails bundle at https://github.com/bokmann/font-awesome-rails.
+   I'm considering removing all of the complexity in this ghbuttons project around the
+   sprites, and just making those two gems work seamlessly together.
+   
 # License:
 
 MIT license.
